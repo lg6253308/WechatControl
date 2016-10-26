@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.sinosoft.dao.WechatUserDao">
+	
+	<resultMap type="userDto" id="userMap">
+		<id property="userid" column="userid"/>
+		<result property="password" column="password"/>	
+		<result property="publicCount" column="publiccount"/>
+		<result property="publicPassword" column="publicpassword"/>
+		<result property="appId" column="appid"/>
+		<result property="appSecret" column="appsecret"/>
+	</resultMap>
+	
+	<sql id="Base_Column_List" >
+    
+    USERID, PASSWORD, PUBLICCOUNT, PUBLICPASSWORD, APPID, APPSECRET
+  </sql>
+	
+	<select id="getUser" parameterType="String" resultMap="userMap">
+		select * from wechat_user where userid=#{userid}
+	</select>
+	
+	<select id="getAllUser" resultMap="userMap">
+		select * from wechat_user
+	</select>
+	
+	
+	<insert id="insertUser" parameterType="com.sinosoft.entity.UserDto">
+   
+   	 insert into wechat_user (userid, password,publicCount,publicPassword,appId,appSecret)
+    values (#{userid,jdbcType=VARCHAR},  #{password,jdbcType=VARCHAR}, 
+      #{publicCount,jdbcType=VARCHAR}, #{publicPassword,jdbcType=VARCHAR}, 
+      #{appId,jdbcType=VARCHAR}, #{appSecret,jdbcType=VARCHAR})
+  	</insert>
+  	  	
+  	
+  	<update id="updateUserInfo" parameterType="com.sinosoft.entity.UserDto" >
+   
+    update wechat_user
+    <set >
+      <if test="password != null" >
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="publicCount != null" >
+        PUBLICCOUNT = #{publicCount,jdbcType=VARCHAR},
+      </if>
+      <if test="publicPassword != null" >
+        PUBLICPASSWORD = #{publicPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null" >
+        APPID = #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="appSecret != null" >
+        APPSECRET = #{appSecret,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where USERID = #{userid,jdbcType=VARCHAR}
+  </update>
+  	
+</mapper>

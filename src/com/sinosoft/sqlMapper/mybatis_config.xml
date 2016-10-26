@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd"> 
+<configuration>
+	<typeAliases>
+		<typeAlias alias="userDto" type="com.sinosoft.entity.UserDto"/>
+		<typeAlias alias = "messageResponseDto" type = "com.sinosoft.entity.MessageResponseDto" />
+		<typeAlias alias="manuDto" type="com.sinosoft.entity.ManuDto"/>
+		<typeAlias alias="fansinfoDto" type="com.sinosoft.entity.FansinfoDto"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="com/sinosoft/sqlMapper/loginMapper.xml"/>
+		<mapper resource = "com/sinosoft/sqlMapper/MessageResponseMapper.xml"/> 
+		<mapper resource="com/sinosoft/sqlMapper/ManuMapper.xml"/>
+		<mapper resource="com/sinosoft/sqlMapper/FansinfoMapper.xml"/>
+	</mappers>
+</configuration>

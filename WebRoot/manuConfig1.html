@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>menu</title>
+<link rel="stylesheet" type="text/css" href="css/css.css" />
+<link href="css/PIE.htc">
+<script type="text/javascript"  src="js/jquery.js"></script>
+</head>
+<style>
+.head, .content {
+	behavior:url(css/PIE.htc);
+}
+.backbtn,.newbtn,.keylist,.keybox,.firsttitle,.savebtn {
+	behavior:url(css/PIE.htc);
+	position:relative;
+}
+</style>
+<div class="header head">
+  <div class="logotop">
+      <div class="logo"><img src="images/logo_02.gif" /></div>  
+      <div class="nowuser">
+      	<table cellpadding="0" cellspacing="0" border="0" width="100%">
+        	<tr>
+            	<td>您好，中科软科技！</td>
+                <td><input type="button" value="安全退出" class="backbtn" /></td>
+            </tr>
+        </table>
+      </div>
+  </div>
+</div>
+<div class="content">
+  <div class="container">
+    <div class="left">
+      <div class="menu">
+
+    <h3>账号管理</h3>
+      <ul class="sub-menu">
+        <li><a href="updateUserInfo.jsp">修改信息</a></li>
+        <li><a href="interConfig.jsp">配置接口</a></li>
+      </ul>
+    <h3>回复设置</h3>
+      <ul class="sub-menu">
+        <li><a href="reply.jsp">关注回复</a></li>
+        <li><a href="reply2.jsp" >自动回复</a></li>
+        <li><a href="getKeywordList">关键字回复</a></li>
+      </ul>
+    <h3>菜单管理</h3>
+      <ul class="sub-menu">
+        <li><a href="manuConfig.jsp">自定义菜单</a></li>
+        <li><a href="interConfig.jsp" >配置响应消息</a></li>
+      </ul>
+      <h3>粉丝管理</h3>
+      <ul class="sub-menu">
+        <li><a href="showFansinfoAction">粉丝分组</a></li>
+        <li><a href="fansMessage.jsp">会话记录</a></li>
+      </ul>
+     <h3>小工具</h3>
+      <ul class="sub-menu">
+        <li><a href="model.jsp">小工具</a></li>
+      </ul>
+     <h3>联系我们</h3>
+      <ul class="sub-menu">
+        <li><a href="About.jsp" target ="mainFrame">关于我们</a></li>
+        <li><a href="#">咨询方式</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+    <div class="right">
+      <div class="title">
+        <div class="titlename">菜单管理《菜单编辑</div>
+      </div>
+      <div class="keyframe">
+      	<div class="newbtnframe"><input type="button" value="效果预览" class="newbtn" /></div>
+        <div class="showframe">
+        	<div class="phone">
+            	<ul id="nav">
+                	<li class="secondMenu">
+                    	<span id="menu1">菜单1</span>
+                        <img src="images/del.png" />
+                        <dl class="subMenus" id="smenu1">
+                        	<dt class="addMenus" id="amenu1">添加</dt>
+                        </dl>
+                    </li>
+                    <li class="secondMenu">
+                    	<span id="menu2">添加</span>
+                    	<dl class="subMenus" id="smenu2">
+                        	<dt class="addMenus">添加</dt>
+                            <dd></dd>
+                        </dl>
+                    </li>
+                    <li class="secondMenu">
+                    	<span>菜单3</span>
+                    	<dl class="subMenus">
+                        	<dt class="addMenus">添加</dt>
+                            <dd></dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+            <div class="keylist" style="height:auto; padding-bottom:15px; min-height:235px;">
+            	<div id="firstmenu1" style="display:none;">
+                	<div class="firsttitle">菜单标题：<input type="text" value="" id="menutxt1"  /></div>
+                    <div class="firstinfo">注：主菜单按钮文字不超过14个汉字或8个字母，子菜单标题最多不超过8个汉字或16个字母</div>
+                    <div class="saveframe"><input type="button" value="保存" class="savebtn" id="save1" /></div>
+				</div>
+				<div id="firstmenu2" style="display:none;">
+                	<div class="firsttitle">菜单标题：<input type="text" value="" id="menutxt2" /></div>
+                    <div class="firstinfo">注：主菜单按钮文字不超过14个汉字或8个字母，子菜单标题最多不超过8个汉字或16个字母</div>
+                    <div class="saveframe"><input type="button" value="保存" class="savebtn" id="save2" /></div>
+				</div>
+                <div id="firstmenu3" style="display:none;">
+                	<div class="firsttitle">菜单标题：<input type="text" value="" id="menutxt3" /></div>
+                    <div class="firstinfo">注：主菜单按钮文字不超过14个汉字或8个字母，子菜单标题最多不超过8个汉字或16个字母</div>
+                    <div class="saveframe"><input type="button" value="保存" class="savebtn" id="save3" /></div>
+				</div>
+				<div id="secendmenu1" style="display:none;">
+					<div class="firsttitle">菜单标题：<input type="text" value="" id="smenutxt1"  /></div>
+					<div class="saveframe"><input type="button" value="保存" class="savebtn" id="second1" /></div>
+				</div>
+                <div id="secondmenu2" style="display:none">
+                    <div class="firsttitle">菜单标题:<input type="text" id="text" /></div>
+                    <div class="saveframe"><input type="button" class="savebtn" id="btn" value="保存" /></div>
+                </div>
+            </div>
+            <div id="addBoll" style="display:none">
+                	<input type="button" value="添加二级菜单" id="addBtn" />
+                </div>
+                
+            <script>
+			var iss = document.getElementById('menu2').innerHTML;
+			if(iss == '添加'){
+				$("#menu2").click(function(){
+					$("#addBoll").show();
+				})
+				$("#addBtn").click(function(){
+					$("#addBtn").hide();
+					$("#firstmenu2").show();
+					$("#firstmenu1").hide();
+					$("#firstmenu3").hide();
+				})
+				$("#save2").click(function(){
+					//alert($("#menutxt2").val());
+					//alert($("#ss").text());
+					//$("#ss").html()=$("#menutxt2").val()
+					document.getElementById('menu2').innerHTML = document.getElementById('menutxt2').value;
+					$("#menu2").click(function(){
+						$("#smenu2").show();
+						$("#firstmenu2").show();
+						$("#firstmenu1").hide();
+						$("#firstmenu3").hide();
+						document.getElementById('menutxt2').value = document.getElementById('menu2').innerHTML;
+					})
+				})
+			}
+			else
+			{
+				$("#menu2").click(function(){
+					$("#smenu2").show();
+				})
+			}
+			$("#menu1").click(function(){
+				$("#smenu1").show();
+				$("#addBoll").hide();
+				$("#firstmenu1").show();
+				$("#firstmenu2").hide();
+				$("#firstmenu3").hide();
+				document.getElementById('menutxt1').value = document.getElementById('menu1').innerHTML;
+			})
+			$("#save1").click(function(){
+				document.getElementById('menu1').innerHTML = document.getElementById('menutxt1').value;
+			})
+			$("#amenu1").click(function(){
+				$("#addBoll").hide();
+				$("#firstmenu1").hide();
+				$("#firstmenu2").hide();
+				$("#firstmenu3").hide();
+				$("#secendmenu1").show();
+			})
+			var secondMenu = document.getElementById('smenu1');
+			var sLi = secondMenu.getElementsByTagName('dd');
+
+			var secondBtn = document.getElementById('second1');
+			var secondTxt = document.getElementById('smenutxt1');
+			/*secondBtn.onclick = function(){
+				var oSecond = document.createElement('dd');
+				secondMenu.appendChild(oSecond);
+				oSecond.innerHTML = secondTxt.value;	
+			
+			}*/
+			$(function(){
+				
+				i=1;
+				$("#amenu1").click(function(){
+					$('<dd id="aa_'+i+'"></dd>').appendTo("#smenu1");
+					i=i+1;
+					var fun=(function(){
+							var value='';
+							var con='';
+							return {
+								con:'',
+								setValue:function(name){
+									this.value=name	
+								},
+								save:function(){
+									$("#"+this.value).text(this.con);	
+								}
+							}
+						})();
+						$("#smenu1 dd").click(function(){
+								$("#secendmenu1").hide();
+								$("#secondmenu2").show();
+								$("#text").html('');
+								fun.setValue($(this).attr("id"));
+								$("#text").val($(this).html());
+							});
+						$("#btn").click(function(){
+								fun.con=$("#text").val();
+								fun.save();
+							})
+					$("#second1").click(function(){
+							sLi[sLi.length-1].innerHTML = secondTxt.value;
+						})
+				})
+				
+			})	
+
+			
+			</script>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+<!--
+$(function(){
+    $(".menu h3").click( function(){
+	   $(this).toggleClass("open")
+       $(this).siblings("h3").removeClass("open")
+	   $(this).next().slideToggle()
+	   $(this).next().siblings("ul").slideUp()
+	})
+})
+//-->
+</script>
+<body>
+</body>
+</html>

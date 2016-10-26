@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script type="text/javascript">
+	var index = 0;
+	function editMenuAction(_sor,index){
+		$.ajax({
+			url : "/WechatControl/demo/editMenu.jsp",
+			type : "get",
+			data : "abc=a",
+			dataType : "json",
+			success : function(jsondata){
+				if(jsondata.status=="success"){
+					uiconrol.call(this,jsondata);
+				}
+			}
+		});
+	}
+	
+	function deleteMenu(_o){
+		// 请求后台处理删除
+		$(_o).parent("td").html("");
+	}
+	
+	function uiconrol(_jsondata){
+		var createnew = true;
+		if($("[col="+index+"]").length>0){
+			for(var i=$("[col="+index+"]").length-1;i>=0;i--){
+				var o = $("[col="+index+"]")[i];
+				if($(o).html()==""){
+					$(o).html(_jsondata.name+index+($("[col="+index+"]").length-1-i)+" &nbsp;<a href='javascript:;' onclick='deleteMenu(this)'>X</a>");
+					createnew = false;
+					break ;
+				}
+			}
+		}
+		if(createnew){
+			$("table").prepend("<tr><td col='0'></td><td col='1'></td><td col='2'></td></tr>");
+			$($("[col="+index+"]")[0]).html(_jsondata.name+index+($("[col="+index+"]").length-1)+" &nbsp;<a href='javascript:;' onclick='deleteMenu(this)'>X</a>");
+		}
+	}
+	
+	function addMenuAction(_sor,_index){
+		$(_sor).click(function(){
+			index = _index;
+			$.ajax({
+				url : "/WechatControl/demo/addMenu.html",
+				type : "get",
+				data : "index="+index,
+				success : function(_html){
+					$("#editcon").html(_html);
+				}
+			});
+		});
+	}
+	$(document).ready(function(){
+		$("#addcolumn a").each(function(i,o){
+			addMenuAction.call(this,$(o),i);
+		});
+	});
+</script>
+</head>
+<body>
+	<div style="width: 800px;height: 500px;">
+		<div style="float: left;width: 40%;margin-bottom: 10px;">
+			<table border="0" cellpadding="5" cellspacing="0" bordercolor="#FF9966">
+				<tr id="addcolumn">
+					<td width="200"><a href="javascript:;">添加</a></td>
+					<td width="200"><a href="javascript:;">添加</a></td>
+					<td width="200"><a href="javascript:;">添加</a>
+				<!-- <a target="aframe" href="/WechatControl/demo/addMenu.html">添加A</a> -->	
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div style="float: right;width: 60%;" id="editcon">
+		<!-- <iframe src="" name="aframe" id="aframe"></iframe> -->
+			
+		</div>
+	</div>
+</body>
+</html>

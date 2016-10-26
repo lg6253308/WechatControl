@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="keywords" content=" " />
+<meta name="description" content=" " />
+<title>导航</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+<style type="text/css">
+body{width:500px;margin:0 auto}
+.footer{margin-top:50px;text-align:center;color:#666;font:bold 14px Arial}
+.footer a{color:#999;text-decoration:none}
+#wrapper-250{width:160px;text-align:left;}
+</style>
+<meta name="robots" content="noindex,follow" />
+</head>
+<body>
+<br>
+<br>
+<div id="wrapper-250">
+  <ul class="accordion">
+    <li id="one" class="files"> <a href="#one">账号管理</a>
+      <ul class="sub-menu">
+        <li><a href="login.jsp" target ="mainFrame">用户登录</a></li>
+        <li><a href="register.jsp" target ="mainFrame">用户注册</a></li>
+        <li><a href="updateUserInfo.jsp" target ="mainFrame">修改信息</a></li>
+        <li><a href="interConfig.jsp" target ="mainFrame">配置接口</a></li>
+      </ul>
+    </li>
+    <li id="two" class="mail"> <a href="#two">回复设置</a>
+      <ul class="sub-menu">
+        <li><a href="subscribeMessage.jsp" target ="mainFrame">关注回复</a></li>
+        <li><a href="autoMessage.jsp" target ="mainFrame">自动回复</a></li>
+        <li><a href="configMessage.jsp" target ="mainFrame">关键字回复</a></li>
+      </ul>
+    </li>
+    <li id="three" class="cloud"> <a href="#three">菜单管理</a>
+      <ul class="sub-menu">
+        <li><a href="manuConfig.jsp" target ="mainFrame">自定义菜单</a></li>
+        <li><a href="interConfig.jsp" target ="mainFrame">配置响应消息</a></li>
+      </ul>
+    </li>
+      <li id="four" class="sign"> <a href="#four" >用户管理</a>
+      <ul class="sub-menu">
+        <li><a href="userlist.jsp" target ="mainFrame">用户分组</a></li>
+        <li><a href="fansMessage.jsp" target ="mainFrame">会话记录</a></li>
+      </ul>
+    </li>
+     <li id="five" class="sign"> <a href="#five">小工具</a>
+      <ul class="sub-menu">
+        <li><a href="model.jsp" target ="mainFrame">小工具</a></li>
+      </ul>
+    </li>
+     <li id="six" class="sign"> <a href="#six">联系我们</a>
+      <ul class="sub-menu">
+        <li><a href="About.jsp" target ="mainFrame">关于我们</a></li>
+        <li><a href="#">咨询方式</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<script type="text/javascript"  src="js/jquery.min.js"></script>
+<script type="text/javascript">
+		$(document).ready(function() {
+			// Store variables
+			var accordion_head = $('.accordion > li > a'),
+				accordion_body = $('.accordion li > .sub-menu');
+			// Open the first tab on load
+			accordion_head.first().addClass('active').next().slideDown('normal');
+			// Click function
+			accordion_head.on('click', function(event) {
+				// Disable header links
+				event.preventDefault();
+				// Show and hide the tabs on click
+				if ($(this).attr('class') != 'active'){
+					accordion_body.slideUp('normal');
+					$(this).next().stop(true,true).slideToggle('normal');
+					accordion_head.removeClass('active');
+					$(this).addClass('active');
+				}
+			});
+		});
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+
+	<constant name="struts.locale" value="zh_CN" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+
+
+	<package name="myPackage" extends="struts-default">
+		<action name="login" class="loginAction" method="login">
+			<result name="success" type="redirect">/frame.jsp</result>
+			<result name="error">/login.jsp</result>
+		</action>
+		<action name="userCheckAction" class="loginAction" method="usernameCheck">
+			
+		</action>
+		<action name="register" class="loginAction" method="register">
+			<result name="success">/login.jsp</result>
+			<result name="error">/register.jsp</result>
+		</action>
+		<action name="updateUserInfo" class="loginAction"
+			method="updateUserInfo">
+			<result name="login">/login1.jsp</result>
+			<result name="error">/updateUserInfo1.jsp</result>
+		</action>
+
+		<action name="getKeywordList" class="doMessageAction" method="showMessage">
+			<result name="login">/login1.jsp</result>
+			<result name="success">/configMessage1.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="addTextMessage" class="doMessageAction" method="addTextMessage">
+			<result name="login">/login1.jsp</result>
+			<result name="success" type="redirectAction">getKeywordList</result>
+			<result name="subscribe" type="redirectAction">getSubscribeMsg</result>
+			<result name="auto" type="redirectAction">getAutoMsg</result>
+			<result name="error">/error.jsp</result>
+		</action>
+	
+		<action name="addNewsMessage" class="doMessageAction" method="addNewsMessage">
+			<result name="login">/login1.jsp</result>
+			<result name="success" type="redirectAction">getKeywordList</result>
+			<result name="subscribe" type="redirectAction">getSubscribeMsg</result>
+			<result name="auto" type="redirectAction">getAutoMsg</result>
+			<result name="error">/error.jsp</result>
+		</action>
+
+		<action name="addMessage" class="doMessageAction" method="addMessage">
+			<result name="login">/login1.jsp</result>
+			<result name="success" type="redirectAction">getKeywordList</result>
+			<result name="subscribe" type="redirectAction">getSubscribeMsg</result>
+			<result name="auto" type="redirectAction">getAutoMsg</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="groupIdCh" class="groupChAction" method="groupIdC">
+			<result name="success">/userlist.jsp</result>
+			<result name="error">/login1.jsp</result>
+		</action>
+
+		<action name="manuAction" class="manuAction" method="doManu">
+			<result name="success">/success.jsp</result>
+			<result name="login">/login1.jsp</result>
+			<result name="update">/updateUserInfo1.jsp</result>
+		</action>
+	
+		<action name="showManu" class="manuAction" method="showManu">
+			<result name="showManu">/manuConfig1.jsp</result>
+			<result name="update">/updateUserInfo1.jsp</result>
+			<result name="login">/login1.jsp</result>
+		</action>
+		
+		<action name="deleManu" class="manuAction" method="deleManu">
+			<result name="showManu" type="redirectAction">showManu</result>
+			<result name="login">/login1.jsp</result>
+		</action>
+		
+		<action name="addManu" class="manuAction" method="addBtn">
+			<result name="success" type="redirectAction">showManu</result>
+			<result name="login">/login1.jsp</result>
+		</action>
+		
+		<action name="addComanu" class="manuAction" method="addComanu">
+			<result name="success" type="redirectAction">showManu</result>
+			<result name="login">/login1.jsp</result>
+		</action>
+		
+		<action name="getButtondataAction" class="manuAction" method="getButtondataAction">					
+		</action>
+
+		
+		
+		<action name="infoDataAction" class="fansinfoAction"
+			method="getFanList">
+			<result name="success">/userlist2.jsp</result>
+			<result name="login">/login1.jsp</result>
+		</action>
+		
+
+		<action name="showFansinfoAction" class="fansinfoAction"
+			method="showFanList">
+			<result name="success">/userlist1.jsp</result>
+			<result name="login">/login1.jsp</result>
+		</action>
+
+
+		<action name="updateMessage" class="doMessageAction"
+			method="updateMessage">
+			<result name="login">/login1.jsp</result>
+			<result name="success" type="redirectAction">getKeywordList</result>
+			<result name="error">/error.jsp</result>
+		</action>
+
+		<action name="deleMessage" class="doMessageAction"
+			method="deleMessage">
+			<result name="login">/login1.jsp</result>
+			<result name="success" type="redirectAction">getKeywordList</result>
+
+		</action>
+		
+		<action name="getAutoMsg" class="doMessageAction" 
+			method="getAutoMsg">
+			<result name="login">/login1.jsp</result>
+			<result name="success">/autoMsg.jsp</result>
+		</action>
+		
+		<action name="getSubscribeMsg" class="doMessageAction"
+			method="getSubscribeMsg">
+			<result name="login">/login1.jsp</result>
+			<result name="success">/subscribeMsg.jsp</result>
+		</action>
+
+	</package>
+
+</struts>

@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<!--配置数据源属性文件  -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>/WEB-INF/configs/sqlServer.properties</value>
+		</property>
+	</bean>
+	
+	<!--配置数据源  -->
+	<bean id="dataSource"
+		class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName">
+			<value>${dbSource.DataSourceName}</value>
+		</property>
+		<property name="jndiEnvironment">
+			<props>
+				<prop key="java.naming.provider.url">
+					${dbSource.DataUrl}
+				</prop>
+				<prop key="java.naming.factory.initial">
+					weblogic.jndi.WLInitialContextFactory
+				</prop>
+			</props>
+		</property>
+		<property name="resourceRef">
+			<value>false</value>
+		</property>
+	</bean>
+	<!-- 
+	 <bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName">
+			<value>${jdbc.driver}</value>
+		</property>
+		<property name="url">
+			<value>${jdbc.url}</value>
+		</property>
+		<property name="username">
+			<value>${jdbc.user}</value>
+		</property>
+		<property name="password">
+			<value>${jdbc.pwd}</value>
+		</property>
+	</bean>
+	 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
+	    <property name="configLocation" value="classpath:com/sinosoft/sqlMapper/mybatis_config.xml" />  
+	    <property name="dataSource" ref="dataSource" />  
+	</bean> 
+	
+    
+       <bean id="wechatUserDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.sinosoft.dao.WechatUserDao"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="loginAction" class="com.sinosoft.action.LoginAction">
+		<property name="wechatUserDao" ref="wechatUserDao"></property>
+	</bean>
+	
+	
+	<bean id="messageResponseDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.sinosoft.dao.MessageResponseDao"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<bean id="doMessageAction" class="com.sinosoft.action.DoMessageAction">
+		<property name="messageResponseDao" ref="messageResponseDao"></property>
+	</bean>
+	
+	<bean id="wechatManuDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.sinosoft.dao.WechatManuDao"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="manuAction" class="com.sinosoft.action.ManuAction" >
+		<property name="wechatManuDao" ref="wechatManuDao"></property>
+		<property name="messageResponseDao" ref="messageResponseDao"></property>
+	</bean>
+			
+	 <bean id="groupChAction" class="com.sinosoft.action.GroupChAction">
+	</bean>
+	
+	<bean id="fansinfoDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.sinosoft.dao.FansinfoDao"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	 
+	 <bean id="fansinfoAction" class = "com.sinosoft.action.FansinfoAction">
+	 	<property name="fansinfoDao" ref="fansinfoDao" />
+	 	<property name="wechatUserDao" ref="wechatUserDao"></property>
+	 </bean>
+
+
+
+	 <bean id="myTask" class="com.sinosoft.common.FansTask"/>  
+    	<bean id="taskInfo" class="org.springframework.scheduling.concurrent.ScheduledExecutorTask">  
+        <property name="delay">  
+            <value>5000</value>  
+        </property>  
+        <property name="period">  
+            <value>3600000</value>  
+        </property>  
+        <property name="runnable">  
+            <ref local="myTask" />  
+        </property>  
+    </bean>  
+    <!--配置定时器任务的调度器-->  
+    <bean id="timerFactory" class="org.springframework.scheduling.concurrent.ScheduledExecutorFactoryBean">  
+        <property name="scheduledExecutorTasks">  
+            <list>  
+                <ref local="taskInfo" />  
+            </list>  
+        </property>  
+    </bean>
+
+</beans>
